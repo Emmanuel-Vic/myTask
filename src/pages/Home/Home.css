@@ -1,0 +1,225 @@
+.principal{
+  padding-top: 100px;
+  padding-bottom: 300px;
+}
+
+.conta{
+  background: linear-gradient(to top right, #0f172a, #334155);
+  border: none;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 80px auto;
+  width: 400px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+.containerAdd{
+  margin: 50px;
+}
+
+.search{
+  margin: 50px;
+}
+
+.search input{
+  border-radius: 20px;
+  width: 190px;
+  height: 40px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  text-shadow: none;
+}
+
+.add{
+  margin-top: 6px;
+  font-size: 30px;
+  transition: 0.2s;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+
+.add:hover{
+  color: rgb(0, 128, 255);
+  text-shadow: none;
+}
+
+/*cards*/
+.card{
+  position: relative;
+  width: 425px;
+  min-height: 200px;
+  height: auto;
+  border-radius: 30px;
+  background: linear-gradient(to top right, #0f172a, #334155);
+  /*background: conic-gradient(at bottom right, #1e40af, #000043);
+  background: conic-gradient(at bottom right, #1d4ed8, #1e40af, #111827);
+  /* background-color: rgba(255, 255, 255, 0.17);talvez deixar 0.15
+  backdrop-filter: blur(6px);
+  border: 2px solid  rgba(255, 255, 255, 0.2);*/
+  padding: 25px;  
+  border: none;
+  margin: 20px;
+  transition: transform 0.3s ease;
+}
+
+
+.inCard{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.card:hover{
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.card h2{
+  margin: 0;
+  font-size: 16px;
+  color: #000;
+  text-shadow: none;
+}
+
+.card p{
+  text-shadow: none;
+}
+
+.functionIcons{
+  position: absolute;
+  bottom: 15px;
+  right: 35px;
+  display: flex;
+  gap: 10px;
+  color: white;
+  align-items: center;
+}
+
+.delete{
+  padding-right: 10px;
+  font-size: 22px;
+  transition: 0.2s;
+}
+
+.edit{
+  padding-bottom: 2.85px;
+  font-size: 17px;
+  transition: 0.2s;
+}
+
+.checkSqua{
+  padding-right: 10px;
+  font-size: 17px;
+  transition: 0.2s;
+}
+
+.edit:hover{
+  color: yellow;  
+}
+
+.checkSqua:hover{
+  color: rgb(24, 173, 24);
+}
+
+.delete:hover{
+  color: red;
+}
+
+.carDescription{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+  width: 375px;
+}
+
+.carDescription p{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.dataCreated{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+  left: 35px;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.dataCreated p{
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.displayCard{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1500px) {
+  .displayCard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .displayCard {
+    margin-left: 120px;
+    grid-template-columns: 1fr;
+  }
+}
+/**/
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  color: white;
+  background: linear-gradient(to top right, #0f172a, #334155);
+  display: grid;
+  text-align: center;
+  padding: 24px;
+  border-radius: 8px;
+  width: 400px;
+  height: 300px;
+}
+
+.modal h2{
+  margin-bottom: 20px;
+}
+
+.modal input{
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-shadow: none;
+  outline: none ;
+}
+
+.modal button{
+  border: none;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 10px;
+  text-shadow: none;
+}

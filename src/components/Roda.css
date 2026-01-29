@@ -1,0 +1,44 @@
+.Rodap {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  /*background-color: #000043dd;*/
+  background-color: rgba(31, 41, 55, 0.97);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 1000;
+}
+
+/* Escondida */
+.Rodap.oculta {
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Visível */
+.Rodap.visivel {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.CopyR{
+    color: #fff;
+}
+
+.CopyR{
+    text-align: center;
+    font-size: 14px;
+    /*transform: translateX(-6.5%);*/
+}
+
+.textoRoda h3, i{
+    
+    font-size: 14px;
+}
+
+.Briake{
+    opacity: 0;
+    margin: 15px;
+}
