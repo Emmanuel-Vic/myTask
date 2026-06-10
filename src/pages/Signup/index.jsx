@@ -74,7 +74,7 @@ const Signup = () => {
           <FaLock className="icon" />
         </div>
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit" className="butia">Cadastrar</button>
       </form>
     </div>
   )

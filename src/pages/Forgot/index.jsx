@@ -54,7 +54,7 @@ const index = () => {
     <div>
       <div className="containerForgot">
         <h1>Digite seu e-mail para recuperar sua senha</h1>
-        <p className="error">{msg}</p>
+        {msg && <p className="error">{msg}</p>}
         <div className="inputo-field">
           <input
             placeholder="E-mail"

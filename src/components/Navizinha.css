@@ -1,4 +1,6 @@
-/* Reset básico */
+/*
+
+ Reset básico 
 
 .navbar {
   padding: 10px;
@@ -12,13 +14,13 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* visível */
+ visível 
 .navbar.show {
   transform: translateY(0);
   opacity: 1;
 }
 
-/* escondida */
+ escondida 
 .navbar.hide {
   transform: translateY(-100%);
   opacity: 0;
@@ -44,63 +46,6 @@
   font-weight: bolder;
 }
 
-/* Menu latreal 
-
-aside.menu-lateral{
-  width: 150px;
-  height: 100%;
-  position: fixed;
-  right: 0;
-  top: 0;
-  background-color: #000043;
-  border-left: 3px  solid rgba(255, 255, 255, 0.2);
-  z-index: 1001;
-  border-radius: 5px 0 0 5;
-  transition: 0.3s;
-}
-
-.btn-expandir{
-  margin-top: 60%;
-  cursor: pointer;
-  font-size: 20px;
-  color: #fff;
-  width: 100%;
-  padding: 50px 4%;
-  background-color: transparent;
-  border: none;
-  transition: 0.2s;
-}
-
-.btn-expandir:hover{
-  background-color: #fff;
-  color: black;
-}
-
-ul{
-  height: 100%;
-  list-style-type: none;
-  margin-top: 90%;
-}
-
-
-ul li.item-menu a:hover{
-  background-color: #fff;
-  color: #000;
-  text-shadow: none;
-  
-}
-
-ul li.item-menu a{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 24px;
-  padding: 50px 4%;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
-} */
 
 ul{
   height: 30px;
@@ -122,4 +67,100 @@ ul li.item-menu a{
 ul li.item-menu a:hover{
   color: rgb(0, 128, 255);
   text-shadow: none;
+}
+*/
+
+.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 68px;
+  background-color: rgba(8, 12, 20, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  z-index: 1000;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.navbar.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.container2 {
+  color: var(--text-primary);
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 68px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 34px;
+  display: flex;
+  border-radius: 8px;
+}
+
+.brand {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+  text-shadow: none;
+}
+
+/* Nav actions */
+ul {
+  list-style: none;
+  position: absolute;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+ul li.item-menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+ul li.item-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  font-size: 17px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+
+ul li.item-menu a:hover {
+  color: var(--accent-hover);
+  background: var(--accent-dim);
+  border-color: var(--border-glow);
+  text-shadow: none;
+}
+
+ul li.item-menu a.logout:hover {
+  color: var(--danger);
+  background: var(--danger-dim);
+  border-color: rgba(239, 68, 68, 0.3);
 }

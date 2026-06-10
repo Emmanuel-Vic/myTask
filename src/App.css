@@ -1,16 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 * {
   margin: 0;
   padding: 0;
-  font-family: "Helvetica";
+  font-family: 'Inter', 'Helvetica', sans-serif;
   box-sizing: border-box;
-  text-shadow: #000 1px 1px;
+  text-shadow: none;
 }
 
-.App{
-  background-image: url(./assets/tokyoBack.webp);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /*OPCIONAL*/
+:root {
+  --bg-base: #080C14;
+  --bg-surface: #0E1420;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.07);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(59, 130, 246, 0.4);
+  --accent: #3B82F6;
+  --accent-hover: #60A5FA;
+  --accent-dim: rgba(59, 130, 246, 0.15);
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+  --danger: #EF4444;
+  --danger-dim: rgba(239, 68, 68, 0.12);
+  --success: #22C55E;
+  --success-dim: rgba(34, 197, 94, 0.12);
+  --warning: #F59E0B;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.App {
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(139, 92, 246, 0.06) 0%, transparent 60%);
+  min-height: 100vh;
+  background-attachment: fixed;
 }
 
 .App2 {
