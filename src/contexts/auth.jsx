@@ -1,58 +1,73 @@
 import { createContext, useEffect, useState } from "react";
+import { supabase } from "../lib/supabase";
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); // evita flash de tela
 
-  // 🔁 Roda ao carregar / recarregar a página
+  // Recupera sessão ao carregar e escuta mudanças
   useEffect(() => {
-    const token = localStorage.getItem("user_token");
-    const users = JSON.parse(localStorage.getItem("users_db"));
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
 
-    if (token && users) {
-      const { email } = JSON.parse(token);
-      const hasUser = users.find((u) => u.email === email);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
 
-      if (hasUser) setUser(hasUser);
-    }
+    return () => subscription.unsubscribe();
   }, []);
 
-  const signin = (email, password) => {
-    const users = JSON.parse(localStorage.getItem("users_db")) || [];
-
-    const hasUser = users.find((u) => u.email === email);
-
-    if (!hasUser) return "Usuário não cadastrado";
-    if (hasUser.password !== password) return "Senha incorreta";
-
-    const token = Math.random().toString(36).substring(2);
-    localStorage.setItem("user_token", JSON.stringify({ email, token }));
-
-    setUser(hasUser);
-    return null;
-  };
-
-  const signup = (email, password) => {
-    const users = JSON.parse(localStorage.getItem("users_db")) || [];
-
-    if (users.some((u) => u.email === email)) {
-      return "E-mail já cadastrado";
+  const signin = async (email, password) => {
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      if (error.message === "Invalid login credentials")
+        return "E-mail ou senha incorretos";
+      return error.message;
     }
-
-    users.push({ email, password });
-    localStorage.setItem("users_db", JSON.stringify(users));
     return null;
   };
 
-  const signout = () => {
-    setUser(null);
-    localStorage.removeItem("user_token");
+  const signup = async (email, password) => {
+    const { error } = await supabase.auth.signUp({ email, password });
+    if (error) {
+      if (error.message.includes("already registered"))
+        return "E-mail já cadastrado";
+      return error.message;
+    }
+    return null; // Supabase envia e-mail de confirmação automaticamente
+  };
+
+  const signout = async () => {
+    await supabase.auth.signOut();
+  };
+
+  // Envia e-mail de recuperação de senha (link mágico da Supabase)
+  const sendPasswordReset = async (email) => {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    if (error) return error.message;
+    return null;
+  };
+
+  // Chamada na página /reset-password após o usuário clicar no link
+  const updatePassword = async (newPassword) => {
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    if (error) return error.message;
+    return null;
   };
 
   return (
-    <AuthContext.Provider value={{ user, signed: !!user, signin, signup, signout }}>
-      {children}
+    <AuthContext.Provider
+      value={{ user, signed: !!user, loading, signin, signup, signout, sendPasswordReset, updatePassword }}
+    >
+      {!loading && children}
     </AuthContext.Provider>
   );
 };
