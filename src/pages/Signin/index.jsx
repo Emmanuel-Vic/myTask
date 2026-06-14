@@ -12,7 +12,7 @@ const Signin = () => {
   const navigate = useNavigate();
   const { signin } = useAuth();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!email || !senha) {
@@ -20,7 +20,7 @@ const Signin = () => {
       return;
     }
 
-    const response = signin(email, senha);
+    const response = await signin(email, senha);
 
     if (response) {
       setError(response);
